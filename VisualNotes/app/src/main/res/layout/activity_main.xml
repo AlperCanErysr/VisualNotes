@@ -32,13 +32,13 @@
         app:srcCompat="@drawable/notes" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/notesButton"
         android:layout_width="121dp"
         android:layout_height="62dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="20dp"
-        android:background="#FFAFC5"
+        android:background="@drawable/radius"
         android:fontFamily="sans-serif-medium"
         android:onClick="notes"
         android:text="Notes"
@@ -53,7 +53,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="20dp"
-        android:background="#FFAFC5"
+        android:background="@drawable/radius"
         android:onClick="newnote"
         android:text="New Note"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -17,50 +17,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/select_image" />
-
-    <TextView
-        android:id="@+id/noteText"
-        android:layout_width="363dp"
-        android:layout_height="344dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_weight="1"
-        android:hint="Your Notes..."
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleText" />
+        app:srcCompat="@drawable/select_image"
+        />
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="113dp"
         android:layout_height="59dp"
-        android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:background="#FFAFC5"
+        android:background="@drawable/radius"
         android:fontFamily="sans-serif-medium"
         android:onClick="save"
         android:text="SAVE"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noteText" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/titleText"
-        android:layout_width="324dp"
-        android:layout_height="45dp"
+        android:layout_width="348dp"
+        android:layout_height="65dp"
         android:layout_marginTop="8dp"
         android:hint="Title"
+        android:onClick="titleClick"
         android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:background="@drawable/radius"/>
+
+    <EditText
+        android:id="@+id/noteText"
+        android:layout_width="359dp"
+        android:layout_height="320dp"
+        android:hint="Your Notes..."
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleText"
+        android:background="@drawable/radius2"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
