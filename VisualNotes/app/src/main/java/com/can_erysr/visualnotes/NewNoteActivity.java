@@ -20,4 +20,8 @@ public class NewNoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_note);
 
     }
+
+    public void selectImage (View view){
+ 
+    }
 }
