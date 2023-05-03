@@ -26,9 +26,10 @@ import android.widget.Toast;
 import com.can_erysr.visualnotes.databinding.ActivityNewNoteBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 
-public class NewNoteActivity extends AppCompatActivity {
+public class NewNoteActivity extends AppCompatActivity{
 
     private ActivityNewNoteBinding binding;
     Bitmap selectedImage;
@@ -47,6 +48,36 @@ public class NewNoteActivity extends AppCompatActivity {
     }
 
 
+
+
+    public void save (View view){
+        String title = binding.titleText.getText().toString();
+        String note = binding.noteText.getText().toString();
+
+        Bitmap smallImage = makeSmallerImage(selectedImage,300);
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        smallImage.compress(Bitmap.CompressFormat.PNG,50,outputStream);
+        byte[] byteArray = outputStream.toByteArray();
+
+    }
+    public Bitmap makeSmallerImage(Bitmap image, int maximumSize){
+
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float) width / (float) height;
+
+        if (bitmapRatio > 1){
+            width = maximumSize;
+            height = (int) (width/bitmapRatio);
+        } else {
+            height = maximumSize;
+            width = (int) (height/bitmapRatio);
+        }
+
+        return image.createScaledBitmap(image,width,height,true);
+    }
     public void selectImage (View view){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES)!= PackageManager.PERMISSION_GRANTED){
