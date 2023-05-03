@@ -50,6 +50,7 @@
         android:background="@drawable/radius"/>
 
     <EditText
+        android:padding="30dp"
         android:id="@+id/noteText"
         android:layout_width="359dp"
         android:layout_height="320dp"
