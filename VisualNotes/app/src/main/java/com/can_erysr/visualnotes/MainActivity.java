@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openNotes(){
-        Intent intent = new Intent(this,Notes.class);
+        Intent intent = new Intent(this,NotesActivity.class);
         startActivity(intent);
     }
 

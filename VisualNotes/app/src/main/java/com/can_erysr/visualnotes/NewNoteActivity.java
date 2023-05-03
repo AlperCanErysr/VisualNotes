@@ -12,6 +12,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
@@ -35,6 +37,7 @@ public class NewNoteActivity extends AppCompatActivity{
     Bitmap selectedImage;
     ActivityResultLauncher<Intent> activityResultLauncher;
     ActivityResultLauncher<String> permissionLauncher;
+    SQLiteDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,25 @@ public class NewNoteActivity extends AppCompatActivity{
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         smallImage.compress(Bitmap.CompressFormat.PNG,50,outputStream);
         byte[] byteArray = outputStream.toByteArray();
+
+        try {
+            database = openOrCreateDatabase("Notes",MODE_PRIVATE,null);
+            database.execSQL("CREATE TABLE IF NOT EXISTS notes(id INTEGER PRIMARY KEY, title VARCHAR, note VARCHAR, image BLOB)");
+
+            String sqlString = "INSERT INTO Notes (title,note,image) VALUES (?,?,?)";
+            SQLiteStatement sqLiteStatement = database.compileStatement(sqlString);
+            sqLiteStatement.bindString(1,title);
+            sqLiteStatement.bindString(2,note);
+            sqLiteStatement.bindBlob(3,byteArray);
+            sqLiteStatement.execute();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        //finish();
+        Intent intent = new Intent(NewNoteActivity.this,NotesActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
 
     }
     public Bitmap makeSmallerImage(Bitmap image, int maximumSize){
