@@ -16,9 +16,6 @@
         android:theme="@style/Theme.VisualNotes"
         tools:targetApi="31" >
         <activity
-            android:name=".NotesActivity"
-            android:exported="false" />
-        <activity
             android:name=".NewNoteActivity"
             android:exported="false" />
         <activity

@@ -78,7 +78,7 @@ public class NewNoteActivity extends AppCompatActivity{
         }
 
         //finish();
-        Intent intent = new Intent(NewNoteActivity.this,NotesActivity.class);
+        Intent intent = new Intent(NewNoteActivity.this,NoteAdapter.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
 
